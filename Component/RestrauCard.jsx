@@ -17,7 +17,7 @@ const RestrauCard = ({
         <span>{avgRating}⭐</span>
         <div className="moreInfo">
         <h3 className="time">{deliveryTime}Min</h3>
-        <h3 className="rate">{costForTwoString}</h3>
+        <h3  className="rate">{costForTwoString}</h3>
         </div>
      </div>
   
