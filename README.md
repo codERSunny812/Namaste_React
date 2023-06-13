@@ -12,7 +12,7 @@
     * 📝[_Hand Written Notes of Live Class_](https://bit.ly/Namaste-React-Chapter01) `Credit - Ashraya KK` -->
 
 
-## 📚 [_Chapter 02 - Igniting our App_](./Chapter%2002%20-%20Igniting%20our%20App/) (Date: 26-05-2023)
+## 📚 [_Chapter 02 - Igniting our App_](./Ch_02%20Igniting%20Our%20App/) (Date: 26-05-2023)
 <!-- - 📘 [_Assignment_](./Chapter%2002%20-%20Igniting%20our%20App/Assignment.md)
 - 📖 [_Theory Assignment Solution_](./Chapter%2002%20-%20Igniting%20our%20App/Theory/Session%202%20Theory.md)
 - 👨‍💻 [_Coding Assignment Solution_](./Chapter%2002%20-%20Igniting%20our%20App/Coding/)
@@ -21,7 +21,7 @@
     * 📝 [_Hand Written Notes of Live Class_](https://bit.ly/Namaste-React-Chapter02) `Credit - Ashraya KK` -->
 
 
-## 📚 [_Chapter 03 - Laying the Foundation_](./Chapter%2003%20-%20Laying%20the%20Foundation/) (Date: 01-06-2023)
+## 📚 [_Chapter 03 - Laying the Foundation_](./Ch_04%20laying%20out%20the%20foundation/) (Date: 01-06-2023)
 <!-- - 📘 [_Assignment_](./Chapter%2003%20-%20Laying%20the%20Foundation/Assignment.md)
 - 📖 [_Theory Assignment Solution_](./Chapter%2003%20-%20Laying%20the%20Foundation/Theory/Session%203%20Theory.md)
 - 👨‍💻 [_Coding Assignment Solution_](./Chapter%2003%20-%20Laying%20the%20Foundation/Coding/)
@@ -31,7 +31,7 @@
 - [🚀 FoodFire Live Project App Link 😍](https://foodfire-chapter03.netlify.app/) -->
 
 
-## 📚 [_Chapter 04 - Talk is Cheap, show me the code_](./Chapter%2004%20-%20Talk%20is%20Cheap%2C%20show%20me%20the%20code/) (Date: 07-06-2023)
+## 📚 [_Chapter 04 - Talk is Cheap, show me the code_](./Ch_04%20laying%20out%20the%20foundation/) (Date: 07-06-2023)
 <!-- - 📘 [_Assignment_](./Chapter%2004%20-%20Talk%20is%20Cheap%2C%20show%20me%20the%20code/Assignment.md)
 - 📖 [_Theory Assignment Solution_](./Chapter%2004%20-%20Talk%20is%20Cheap%2C%20show%20me%20the%20code/Theory/Session%204%20Theory.md)
 - 👨‍💻 [_Coding Assignment Solution_](./Chapter%2004%20-%20Talk%20is%20Cheap%2C%20show%20me%20the%20code/Coding/)
