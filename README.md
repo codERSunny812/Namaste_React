@@ -3,7 +3,7 @@
 <!-- - I made [🚀 FoodFire App 😍](https://foodfire-app.netlify.app/) from scratch using React.js and Parcel.js, which is the part of this course. -->
 
 
-## 📚 [_Chapter 01 - Inception_](.Ch_01%20Inception/) (Date: 20-05-2023)
+## 📚 [_Chapter 01 - Inception_](./Ch_01%20Inception/) (Date: 20-05-2023)
 <!-- - 📘 [_Assignment_](./Chapter%2001%20-%20Inception/Assignment.md)
 - 📖 [_Theory Assignment Solution_](./Chapter%2001%20-%20Inception/Theory/Session1-Theory.md)
 - 👨‍💻 [_Coding Assignment Solution_](./Chapter%2001%20-%20Inception/Coding/)
