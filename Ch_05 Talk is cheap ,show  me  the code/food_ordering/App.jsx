@@ -1911,6 +1911,14 @@ const restaurantList = [
 
 const RestrauCard = ({restaurant}) =>{
 
+  // you can also destructure inside the arrow funcion but for that you have to pass the props in restraucard as restaurantList[0].data
+
+  // const RestrauCard = ({name,cuisines,cloudinaryImageId,avgRating,deliveryTime,costForTwoString}=restaurant.data;
+  // }) =>{}
+  // but for this you have to pass the many props for each of the element like name , cuisines etc so to avoid that you can use spread operator that's --> <RestrauCard  {...restaurant[0].data}/>
+
+
+
   // array  destructing can also  be used to minimize the code 
   const {name,cuisines,cloudinaryImageId,avgRating,deliveryTime,costForTwoString}=restaurant.data;
 
@@ -1918,13 +1926,13 @@ const RestrauCard = ({restaurant}) =>{
 <div className="cards">
 
    {/* <img  src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+props.restaurant.data.cloudinaryImageId}/>
-   <h3 className="foodName">{props.restaurant.data.name}</h3>
-   <h5 className="foodCuisines">{props.restaurant.data.cuisines.join()}</h5>
+   <h3 className="foodName">{restaurant.data.name}</h3>
+   <h5 className="foodCuisines">{restaurant.data.cuisines.join()}</h5>
    <div className="rating">
-      <span>{props.restaurant.data.avgRating}⭐</span>
+      <span>{restaurant.data.avgRating}⭐</span>
       <div className="moreInfo">
-      <h3 className="time">{props.restaurant.data.deliveryTime}Min</h3>
-      <h3 className="rate">{props.restaurant.data.costForTwoString}</h3>
+      <h3 className="time">{restaurant.data.deliveryTime}Min</h3>
+      <h3 className="rate">{restaurant.data.costForTwoString}</h3>
       </div>
    </div> */}
 
@@ -1953,7 +1961,7 @@ const Body = () =>{
    return(
       <div className="cardInfo">
          {/* what ever you passed in your component as an argument is known as props */}
-      <RestrauCard  restaurant={restaurantList[0]}/>
+      {/* <RestrauCard  restaurant={restaurantList[0]}/>
       <RestrauCard  restaurant={restaurantList[1]}/>
       <RestrauCard  restaurant={restaurantList[2]}/>
       <RestrauCard  restaurant={restaurantList[3]}/>
@@ -1967,13 +1975,13 @@ const Body = () =>{
       <RestrauCard  restaurant={restaurantList[11]}/>
       <RestrauCard  restaurant={restaurantList[12]}/>
       <RestrauCard  restaurant={restaurantList[13]}/>
-      <RestrauCard  restaurant={restaurantList[14]}/>
+      <RestrauCard  restaurant={restaurantList[14]}/> */}
       
-      {/* {
+      {
         restaurantList.map((restaurant)=>{
-          return  <RestrauCard  {...restaurant.data}/>;
+          return  <RestrauCard key={restaurant.data.id} {...restaurant.data}/>;
         })
-      } */}
+      }
       </div>
    );
 }
