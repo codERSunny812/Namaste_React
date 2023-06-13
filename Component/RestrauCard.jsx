@@ -1,4 +1,5 @@
-import { ImageId } from "./Config";
+
+import { ImageId } from "./config";
 
 const RestrauCard = ({
     name,
