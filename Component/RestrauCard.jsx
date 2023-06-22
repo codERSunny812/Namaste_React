@@ -13,7 +13,6 @@ const RestrauCard = ({
   <div className="cards">
      <img  src={ImageId+cloudinaryImageId}/>
      <h3 className="foodName">{name}</h3>
-     <h5 className="foodCuisines">{cuisines.join()}</h5>
      <div className="rating">
         <span>{avgRating}⭐</span>
         <div className="moreInfo">
