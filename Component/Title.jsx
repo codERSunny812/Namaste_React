@@ -1,7 +1,8 @@
-
+import logoFinal from './logo/logoFinal.png';
 const Title = () => (
     <a href="/">
-      <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQBMzZEavY9qBAoOtpKxC4JOcJhng5uZhlidFmm91pw&usqp=CAU&ec=48665701" className="logo"/>
+      <img  src={logoFinal} className="logo"/>
+      
     </a>
    );
 
