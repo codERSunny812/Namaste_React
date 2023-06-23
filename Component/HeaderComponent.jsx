@@ -1,6 +1,8 @@
 // Header component for header section: Logo, Nav Items
+import { useState } from "react";
 import Title from "../Component/Title";
 const HeaderComponent =()=>{
+   const [isLoggedIn,setIsLoggedIn]=useState(true);
     return(
        <div className="header">
           <Title />
@@ -11,7 +13,18 @@ const HeaderComponent =()=>{
                 <li>contact us </li>
                 <li>cart </li>
              </ul>
-             </div>  
+             </div> 
+             {
+              isLoggedIn?( 
+               <button onClick={()=>{
+                  setIsLoggedIn(false)
+               }}>Log In</button>
+              ):(
+               <button onClick={()=>{
+                  setIsLoggedIn(true)
+               }}>Log Out </button>
+              )
+             } 
        </div>
     );
  }
