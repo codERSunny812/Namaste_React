@@ -4,35 +4,42 @@
     overflow-x: hidden;
 }
 body{
-background-color:   rgba(50, 50, 93, 0.25);
+   
 overflow-x: hidden;
 /* border: 2px solid black; */
 }
 .logo{
     width: 130px;
-    height: 130px;
+    height: 135px;
+   
 }
 
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0px;
+    margin: 10px 7px;
     width: 97vw;
     /* border: 2px solid red ; */
     background-color: thistle;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 0px 19px 0px, rgba(0, 0, 0, 0.3) 0px 0px 19px 0px;
 }
 
-.nav-items > ul {
+  .nav-items > ul {
 list-style-type: none;
 display: flex;
 
 }
 
-.nav-items > ul > li{
+ .nav-items > ul > li{
     padding: 12px;
     text-transform: uppercase;
+}
+.link{
+    padding: 12px;
+    text-transform: uppercase;
+text-decoration: none;
+color: black;
 }
 
 .cards{
@@ -107,3 +114,25 @@ margin: 0 9px;
 padding:0 26px;
 }
 
+.shimmerCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid red; */
+    margin: 0 9px;
+    padding:0 26px;
+}
+.shimmerUi{
+    width: 200px ;
+    height: 200px;
+    background-color: gray;
+    margin: 20px;
+}
+
+.ErrorImage{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+
+}
