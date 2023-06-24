@@ -1,6 +1,7 @@
 // Header component for header section: Logo, Nav Items
 import { useState } from "react";
 import Title from "../Component/Title";
+import { Link } from "react-router-dom";
 const HeaderComponent =()=>{
    const [isLoggedIn,setIsLoggedIn]=useState(true);
     return(
@@ -8,9 +9,10 @@ const HeaderComponent =()=>{
           <Title />
           <div className="nav-items">
              <ul>
-                <li>home </li>
-                <li>about us</li>
-                <li>contact us </li>
+               <Link to="/" className="link"> <li>home</li></Link>
+                {/* <li><Link to="/">Home</Link> </li> */}
+                <Link to="/aboutus" className="link"><li>about us</li></Link>
+               <Link to="/contactus" className="link"><li>contact us </li></Link> 
                 <li>cart </li>
              </ul>
              </div> 
