@@ -58,4 +58,5 @@ const appBrowser=createBrowserRouter(
 // selected the root element 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // here we render this on our page 
+
 root.render(<RouterProvider router={appBrowser} />);          
