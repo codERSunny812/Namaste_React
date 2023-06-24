@@ -1,52 +1,95 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { restaurantList } from "./config";
 import RestrauCard from "./RestrauCard";
-
-// now we have to apply the filter algorithm
-function filterData(newKeyWord, restrauntData) {
-   const filterDataGet = restrauntData.filter(
-      (res) =>{
-    res.data.name.includes(newKeyWord);
-   }
-  );
-  return filterDataGet;
+import ShimmerUi from "./ShimmerUi";
+import { Link } from "react-router-dom";
   
+// Filter the restaurant data according  to the input type
+function filterData(searchText, restaurants) {
+   const filterData = restaurants.filter((restaurant) =>
+     restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
+   );
+   return filterData;
  }
-
+ 
+// Body Component for body section: It contain all restaurant cards
 const Body = () => {
-  // useState: To create a state variable, searchText is local state variable
-  const [newKeyWord, setNewKeyWord] = useState(" ");
-  const [restrauntData, setrestrautData] = useState(restaurantList);
-  return (
+  const [searchText, setSearchText] = useState("");
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredrestaurants, setfilteredRestaurants] = useState([]);
+
+
+ // use useEffect for one time call getRestaurants using empty dependency array
+  useEffect(()=>{
+  // Api Call
+getRestrauData();
+  },[])
+
+  // async function getRestaurant to fetch Swiggy API data
+  async function getRestrauData(){
+    const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
+    const dataGet= await data.json();
+    // console.log(dataGet);
+    // console.log(dataGet.data.cards[2].data.data.cards);
+    setAllRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
+    setfilteredRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
+  }
+
+  // use searchData function and set condition if data is empty show error message
+  const searchData = (searchText, restaurants) => {
+    if (searchText !== "") {
+      const data = filterData(searchText, restaurants);
+      setfilteredRestaurants(data);
+      setErrorMessage("");
+      if (data.length === 0) {
+        setErrorMessage("No matches restaurant found");
+      }
+    } else {
+      setErrorMessage("");
+      setfilteredRestaurants(restaurants);
+    }
+  };
+
+
+// conditional rendering 
+// if the restrauant is empty then show shimmer ui
+// and if the restaurant is not empty then show the actual data ui 
+
+
+// for searching of the restaurant 
+ // if allRestaurants is empty don't render restaurants cards
+ if (!allRestaurants) return null;
+  return (allRestaurants.length===0)?<ShimmerUi/> :(
     <>
       <div className="search-container">
-        <input
+      <input
           type="text"
           className="search-input"
-          placeholder="search"
-          value={newKeyWord}
-          onChange={(e) => {
-            setNewKeyWord(e.target.value);
-          }}
-        />
+          placeholder="Search a restaurant you want..."
+          value={searchText}
+          // update the state variable searchText when we typing in input box
+          onChange={(e) => setSearchText(e.target.value)}
+        ></input>
         <button
-          className="searchbtn"
+          className="search-btn"
           onClick={() => {
-            // filter on click
-            const data = filterData(newKeyWord, restrauntData);
-            // update the state of restaurants list
-            setrestrautData(data);
+            // user click on button searchData function is called
+            // filter the data
+            searchData(filterData(searchText, allRestaurants));
           }}
         >
-          search
-        </button>
+          Search
+          </button>
 
       </div>
 
+ 
+      {/* restaurant card info  */}
       <div className="cardInfo">
         {/* how the map function work  */}
-        {restrauntData.map((restaurant) => {
-          return <RestrauCard key={restaurant.data.id} {...restaurant.data} />;
+        {filteredrestaurants.map((restaurant) => {
+          return 
+          <Link to={"/restaurant"+restaurant.data.id} key={restaurant.data.id}><RestrauCard {...restaurant.data} />;</Link>
         })}
       </div>
     </>
