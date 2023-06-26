@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 const About=()=>{
     return(
         <>
@@ -7,6 +8,7 @@ const About=()=>{
             { " "}
             This is the chapter 9 of the namaste react course .
         </p>
+        <Outlet />
         </>
     );
 }
