@@ -42,14 +42,16 @@ text-decoration: none;
 color: black;
 }
 
-.cards{
+.cards {
     width: 200px;
     border: 1px solid black ;
     padding: 10px;
     margin: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
-
+}
+.link{
+    text-decoration: none;
 }
 
 .cards img{
