@@ -8,6 +8,7 @@ import About from "../Component/About";
 import ErrorPage from "../Component/ErrorPage";
 import ContactUs from "../Component/ContactUs";
 import RestrauDetail from "../Component/RestrauDetails";
+import Profile from "../Component/Profile";
 
 
 
@@ -38,14 +39,23 @@ const appBrowser=createBrowserRouter(
             },
             {
                path:"/aboutus",
-               element:<About />
+               element:<About />,
+               // what if you want to go to about/profile
+               children:[
+                  {
+                     path:'profile',
+                     element:<Profile/>
+
+                  }
+               ]
+
             },
             {
                path:"/contactus",
                element:<ContactUs />
             },
             {
-               path:"/restaurant/:id",
+               path:"/restaurant/:id", //whatever you put in this will come in param 
                element:<RestrauDetail /> 
 
             }
