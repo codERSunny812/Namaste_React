@@ -3,20 +3,15 @@ import { restaurantList } from "./config";
 import RestrauCard from "./RestrauCard";
 import ShimmerUi from "./ShimmerUi";
 import { Link } from "react-router-dom";
-  
-// Filter the restaurant data according  to the input type
-function filterData(searchText, restaurants) {
-   const filterData = restaurants.filter((restaurant) =>
-     restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
-   );
-   return filterData;
- }
+import { filterData } from "../Util/Filter";  
+
  
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredrestaurants, setfilteredRestaurants] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
 
  // use useEffect for one time call getRestaurants using empty dependency array
@@ -27,28 +22,22 @@ getRestrauData();
 
   // async function getRestaurant to fetch Swiggy API data
   async function getRestrauData(){
-    const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
+    try {
+      const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
     const dataGet= await data.json();
     // console.log(dataGet);
-    // console.log(dataGet.data.cards[2].data.data.cards);
+    console.log(dataGet.data.cards[2].data.data.cards);
     setAllRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
     setfilteredRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
+
   }
 
-  // use searchData function and set condition if data is empty show error message
-  const searchData = (searchText, restaurants) => {
-    if (searchText !== "") {
-      const data = filterData(searchText, restaurants);
-      setfilteredRestaurants(data);
-      setErrorMessage("");
-      if (data.length === 0) {
-        setErrorMessage("No matches restaurant found");
-      }
-    } else {
-      setErrorMessage("");
-      setfilteredRestaurants(restaurants);
-    }
-  };
 
 
 // conditional rendering 
@@ -59,7 +48,7 @@ getRestrauData();
 // for searching of the restaurant 
  // if allRestaurants is empty don't render restaurants cards
  if (!allRestaurants) return null;
-  return (allRestaurants.length===0)?<ShimmerUi/> :(
+  return (
     <>
       <div className="search-container">
       <input
@@ -75,24 +64,32 @@ getRestrauData();
           onClick={() => {
             // user click on button searchData function is called
             // filter the data
-            searchData(filterData(searchText, allRestaurants));
+          <filterData p1={searchText} p2={allRestaurants} />
           }}
         >
           Search
           </button>
 
       </div>
-
- 
       {/* restaurant card info  */}
-      <div className="cardInfo">
-        {/* how the map function work  */}
-        {filteredrestaurants.map((restaurant) => {
-          return 
-          <Link to={"/restaurant"+restaurant.data.id} key={restaurant.data.id}><RestrauCard {...restaurant.data} />;</Link>
-        })}
-      </div>
-    </>
-  );
+{allRestaurants?.length === 0 ? (
+  <ShimmerUi/>
+) : (
+  <div className="cardInfo">
+    {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
+    {filteredrestaurants.map((restaurant) => {
+      return (
+        <Link
+          to={"/restaurant/" + restaurant.data.id}
+          key={restaurant.data.id} className="link"
+        >
+          <RestrauCard {...restaurant.data} />
+        </Link>
+      );
+    })}
+  </div>
+)}
+</>
+);
 };
-export default Body;
+export default Body;  
