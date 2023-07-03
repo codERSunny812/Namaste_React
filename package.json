@@ -5,7 +5,7 @@
   "main": "App.js",
   "scripts": {
     "test": "\"jest\"",
-    "start": "parcel index.htm",
+    "start": "parcel index.htm ",
     "build": "parcel build index.htm "
   },
   "repository": {
@@ -20,7 +20,8 @@
   "homepage": "https://github.com/codERSunny812/Namaste_React#readme",
   "devDependencies": {
     "parcel": "^2.8.3",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "react": "^18.2.0",

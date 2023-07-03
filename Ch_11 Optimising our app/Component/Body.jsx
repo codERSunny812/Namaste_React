@@ -5,7 +5,7 @@ import ShimmerUi from "./ShimmerUi";
 import { Link } from "react-router-dom";
 import { filterData } from "../Util/Filter";  
 import useRestrauList from "../Util/useRestrauList";
-
+import useOnline from "../Util/useonline";
 
  
 // Body Component for body section: It contain all restaurant cards
@@ -14,33 +14,23 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredrestaurants, setfilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
- 
-    useEffect(()=>{
-  // Api Call
-getRestrauData();
-  },[])
+  const restaurantList = useRestrauList(allRestaurants,filteredrestaurants);
 
-  // async function getRestaurant to fetch Swiggy API data
-  async function getRestrauData(){
-    try {
-      const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
-    const dataGet= await data.json();
-    console.log(dataGet.data.cards[2].data.data.cards);
-    setAllRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
-    setfilteredRestaurants(dataGet?.data?.cards[2]?.data?.data?.cards);
-      
-    } catch (error) {
-      console.log(error);
-      
-    }
-    
+ // conditional rendering 
+// if the restrauant is empty then show shimmer ui
+// and if the restaurant is not empty then show the actual data ui 
 
-  }
+// to check the internet status like 
+// if user is online then show the RestrauCard else show no internet acess 
 
+const isOnline = useOnline();
 
+if(!isOnline){
+  return <h1>Oops something went wrong , check your internet connection </h1>
+}
 
-
-
+// for searching of the restaurant 
+ // if allRestaurants is empty don't render restaurants cards
  if (!allRestaurants) return null;
   
   return (
