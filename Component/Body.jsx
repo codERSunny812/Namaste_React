@@ -9,7 +9,8 @@ import useRestrauList from "../Util/useRestrauList";
 
  
 // Body Component for body section: It contain all restaurant cards
-const Body = () => {
+const Body = (user) => {
+  console.log({user});
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredrestaurants, setfilteredRestaurants] = useState([]);
@@ -45,17 +46,17 @@ getRestrauData();
   
   return (
     <>
-      <div className="search-container">
+      <div className="search-container bg-pink-400 p-2 my-2">
       <input
           type="text"
-          className="search-input"
+          className="search-input px-2 mx2 bg-gray-200"
           placeholder="Search a restaurant you want..."
           value={searchText}
           // update the state variable searchText when we typing in input box
           onChange={(e) => setSearchText(e.target.value)}
         ></input>
         <button
-          className="search-btn"
+          className="search-btn border-spacing-1 rounded-lg p-1 bg-cyan-300 text-white mx-2 "
           onClick={() => {
             // user click on button searchData function is called
             // filter the data
@@ -72,7 +73,7 @@ getRestrauData();
 {allRestaurants?.length === 0 ? (
   <ShimmerUi/>
 ) : (
-  <div className="cardInfo">
+  <div className="cardInfo flex flex-wrap">
     {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
     {filteredrestaurants.map((restaurant) => {
       return (
@@ -80,7 +81,7 @@ getRestrauData();
           to={"/restaurant/" + restaurant.data.id}
           key={restaurant.data.id} className="link"
         >
-          <RestrauCard {...restaurant.data} />
+          <RestrauCard {...restaurant.data} data={user}/>
         </Link>
       );
     })}

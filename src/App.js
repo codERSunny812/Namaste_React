@@ -9,7 +9,7 @@ import ErrorPage from "../Component/ErrorPage";
 import ContactUs from "../Component/ContactUs";
 import RestrauDetail from "../Component/RestrauDetails";
 import Profile from "../Component/Profile";
-
+import InstaCart from "../Component/instaCart";
 
 
 
@@ -17,6 +17,7 @@ import Profile from "../Component/Profile";
 
 // AppLayout component to show: Header, Body, Footer
 const AppLayout = () =>{
+   
    return(
       <>
       <HeaderComponent />
@@ -35,7 +36,10 @@ const appBrowser=createBrowserRouter(
          children:[
             {
                path:"/",
-               element:<Body/>   
+               element:<Body user={{
+                  name:"sunny"
+                   ,age:12
+                  }} />   
             },
             {
                path:"/aboutus",
@@ -57,6 +61,11 @@ const appBrowser=createBrowserRouter(
             {
                path:"/restaurant/:id", //whatever you put in this will come in param 
                element:<RestrauDetail /> 
+
+            },
+            {
+               path:"/instaCart", //whatever you put in this will come in param 
+               element:<InstaCart /> 
 
             }
 

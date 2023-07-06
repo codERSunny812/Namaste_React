@@ -1,4 +1,21 @@
-*{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .logo{
+    width: 130px;
+    height: 135px;
+   
+} */
+
+
+
+
+
+
+
+
+/* *{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -6,7 +23,7 @@
 body{
    
 overflow-x: hidden;
-/* border: 2px solid black; */
+
 }
 .logo{
     width: 130px;
@@ -20,7 +37,6 @@ overflow-x: hidden;
     align-items: center;
     margin: 10px 7px;
     width: 97vw;
-    /* border: 2px solid red ; */
     background-color: thistle;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 0px 19px 0px, rgba(0, 0, 0, 0.3) 0px 0px 19px 0px;
 }
@@ -69,8 +85,6 @@ color: black;
     display: flex;
     justify-content:space-between;
     align-items: center;
-    /* border: 2px solid red; */
-    /* margin: 12px; */
     width: 100%;
     margin: 20px 0;
     padding: 2px 4px ;
@@ -84,7 +98,7 @@ color: black;
     outline: none;
 }
 .moreInfo{
-    /* border: 2px solid aqua; */
+    
     display: flex;
     align-items: center;
     font-size: 13px;
@@ -95,11 +109,10 @@ color: black;
     font-weight: 300;
     padding: 0 4px ;
     font-size: 13px;
-    /* border: 2px solid firebrick; */
+   
 
 }
 .rate{
-    /* border: 2px solid blue; */
     font-weight: 300;
     font-size: 13px;
     padding: 0 5px;
@@ -111,7 +124,6 @@ color: black;
  display: flex;
 flex-wrap: wrap;
 justify-content: center;
-/* border: 2px solid red; */
 margin: 0 9px;
 padding:0 26px;
 }
@@ -120,7 +132,6 @@ padding:0 26px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* border: 2px solid red; */
     margin: 0 9px;
     padding:0 26px;
 }
@@ -137,4 +148,5 @@ padding:0 26px;
    left: 50%;
    transform: translate(-50%,-50%);
 
-}
+} */
+

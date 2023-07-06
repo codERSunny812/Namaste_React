@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 const HeaderComponent =()=>{
    const [isLoggedIn,setIsLoggedIn]=useState(true);
     return(
-       <div className="header">
+       <div className="header flex justify-between bg-purple-700 ">
           <Title />
           <div className="nav-items">
-             <ul>
-               <Link to="/" className="link"> <li>home</li></Link>
+             <ul className="flex py-10 px-2">
+               <Link to="/" className="link"> <li className="px-2">home</li></Link>
                 {/* <li><Link to="/">Home</Link> </li> */}
-                <Link to="/aboutus" className="link"><li>about us</li></Link>
-               <Link to="/contactus" className="link"><li>contact us </li></Link> 
-                <li>cart </li>
+                <Link to="/aboutus" className="link"><li className="px-2">about us</li></Link>
+               <Link to="/contactus" className="link"><li className="px-2">contact us </li></Link> 
+               <Link to="/instaCart" className="link"><li className="px-2">instaCart </li></Link>
              </ul>
              </div> 
              {

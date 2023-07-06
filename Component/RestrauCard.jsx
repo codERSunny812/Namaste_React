@@ -7,12 +7,15 @@ const RestrauCard = ({
     cloudinaryImageId,
     avgRating,
     deliveryTime,
-    costForTwoString
+    costForTwoString,
+    user
   }) =>{
   return (
-  <div className="cards">
+   
+   
+  <div className="cards w-[200px] p-2 m-2 shadow-xl bg-[#36454F]">
      <img  src={ImageId+cloudinaryImageId}/>
-     <h3 className="foodName">{name}</h3>
+     <h3 className="foodName font-bold text-white ">{name}</h3>
      <div className="rating">
         <span>{avgRating}⭐</span>
         <div className="moreInfo">
@@ -20,9 +23,10 @@ const RestrauCard = ({
         <h3  className="rate">{costForTwoString}</h3>
         </div>
      </div>
-  
   </div>
-     );
+
+  
+  );
   }
   
 
