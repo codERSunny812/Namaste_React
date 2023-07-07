@@ -1,81 +1,78 @@
-import React from "react";
-import  ReactDOM ,{createRoot} from "react-dom/client";
-import HeaderComponent  from "../Component/HeaderComponent";
-import Body  from "../Component/Body";
-import Footer from "../Component/Footer";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import About from "../Component/About";
-import ErrorPage from "../Component/ErrorPage";
-import ContactUs from "../Component/ContactUs";
-import RestrauDetail from "../Component/RestrauDetails";
-import Profile from "../Component/Profile";
-import InstaCart from "../Component/instaCart";
+import React, { lazy, Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import Header from "./Component/HeaderComponent";
+import Body from "./Component/Body";
+//import About from "./components/About";
+import Contact from "./Component/ContactUs";
+import Error from "./Component/Error";
+import RestaurantMenu from "./Component/RestrauDetails";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import Store from "./Util/Store";
+//import Grocery from "./components/Grocery";
+
+// Chunking
+// Code Splitting
+// Dynamic Bundling
+// lazy Loading
+// on demand loading
+// dynamix imoprt
 
 
 
-// default and named export 
+const Grocery = lazy(() => import("./Component/Grocery"));
 
-// AppLayout component to show: Header, Body, Footer
-const AppLayout = () =>{
-   
-   return(
-      <>
-      <HeaderComponent />
+const About = lazy(() => import("./Component/About"));
+
+const AppLayout = () => {
+  return (
+    <Provider Store={Store}>
+    <div className="app">
+      <Header />
       <Outlet />
-      <Footer />
-      </>
-   );
-}
+    </div>
+    </Provider>
+  );
+};
 
-const appBrowser=createBrowserRouter(
-   [
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
       {
-         path:'/',
-         element:<AppLayout />,
-         errorElement:<ErrorPage/>,
-         children:[
-            {
-               path:"/",
-               element:<Body user={{
-                  name:"sunny"
-                   ,age:12
-                  }} />   
-            },
-            {
-               path:"/aboutus",
-               element:<About />,
-               // what if you want to go to about/profile
-               children:[
-                  {
-                     path:'profile',
-                     element:<Profile/>
-
-                  }
-               ]
-
-            },
-            {
-               path:"/contactus",
-               element:<ContactUs />
-            },
-            {
-               path:"/restaurant/:id", //whatever you put in this will come in param 
-               element:<RestrauDetail /> 
-
-            },
-            {
-               path:"/instaCart", //whatever you put in this will come in param 
-               element:<InstaCart /> 
-
-            }
-
-         ]
+        path: "/",
+        element: <Body />,
       },
-     
-   ]
-)
-// selected the root element 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// here we render this on our page 
+      {
+        path: "/about",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
 
-root.render(<RouterProvider router={appBrowser} />);          
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<RouterProvider router={appRouter} />);
