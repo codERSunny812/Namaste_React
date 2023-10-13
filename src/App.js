@@ -26,12 +26,14 @@ const About = lazy(() => import("./Component/About"));
 
 const AppLayout = () => {
   return (
-    <Provider Store={Store}>
-    <div className="app">
+   
+    
+       <Provider Store={Store}>
       <Header />
       <Outlet />
-    </div>
-    </Provider>
+      </Provider>
+   
+   
   );
 };
 
